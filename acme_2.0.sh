@@ -47,8 +47,11 @@ create(){
 	echo -e "${Info} now you should perform domain TXT record authorization"
 	read -p "then press 'enter' to continue"
 	if [[ "${type}" = "1" ]]; then
+		[[ ! -d /home/${domain}_rsa ]] && mkdir -p /home/${domain}_rsa
 		 ./make.sh --renew -d ${domain} && mv -f /root/.acme.sh/${domain} /home/${domain}_rsa
-	else ./make.sh --renew -d ${domain} --ecc && mv -f /root/.acme.sh/${domain}_ecc /home/${domain}_ecc
+	else 
+		[[ ! -d /home/${domain}_ecc ]] && mkdir -p /home/${domain}_ecc
+		./make.sh --renew -d ${domain} --ecc && mv -f /root/.acme.sh/${domain}_ecc /home/${domain}_ecc
 	fi
 }
 
@@ -73,5 +76,5 @@ get_makesh
 get_domain
 create
 exist
-rm -rf /root/.acme.sh
-rm -rf /home/acme
+# rm -rf /root/.acme.sh
+# rm -rf /home/acme
