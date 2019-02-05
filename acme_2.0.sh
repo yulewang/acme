@@ -48,10 +48,10 @@ create(){
 	read -p "then press 'enter' to continue"
 	if [[ "${type}" = "1" ]]; then
 		[[ ! -d /home/${domain}_rsa ]] && mkdir -p /home/${domain}_rsa
-		 ./make.sh --renew -d ${domain} && mv -f /root/.acme.sh/${domain} /home/${domain}_rsa
+		 ./make.sh --renew -d ${domain} && mv /root/.acme.sh/${domain}/* /home/${domain}_rsa/
 	else 
 		[[ ! -d /home/${domain}_ecc ]] && mkdir -p /home/${domain}_ecc
-		./make.sh --renew -d ${domain} --ecc && mv -f /root/.acme.sh/${domain}_ecc /home/${domain}_ecc
+		./make.sh --renew -d ${domain} --ecc && mv /root/.acme.sh/${domain}_ecc/* /home/${domain}_ecc
 	fi
 }
 
