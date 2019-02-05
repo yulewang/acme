@@ -21,7 +21,7 @@ directory(){
 }
 
 get_makesh(){
-	[[ ! -f make.sh ]] && wget https://raw.githubusercontent.com/nanqinlang-script/acme/master/make.sh && chmod +x make.sh
+	[[ ! -f make.sh ]] && wget https://raw.githubusercontent.com/yulewang/acme/master/make.sh && chmod +x make.sh
 	[[ ! -f make.sh ]] && echo -e "${Error} requirement download failed, please check !" && exit 1
 }
 
